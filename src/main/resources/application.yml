@@ -1,0 +1,10 @@
+jdbc:
+  driverClassName: com.mysql.jdbc.Driver
+  url: jdbc:mysql://localhost:3306/zhihai3
+  username: root
+  password: root
+server:
+  port: 8080
+logging:
+  level:
+    springBootDemo: info
