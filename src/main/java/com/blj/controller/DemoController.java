@@ -26,8 +26,10 @@ public class DemoController {
         demo.setCreatTime(new Date());
         return demo;
     }
+
     @RequestMapping("/hello")
     public  String hello(){
         return "hello springboot!";
     }
+
 }
