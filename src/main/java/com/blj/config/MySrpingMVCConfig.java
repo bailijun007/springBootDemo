@@ -5,6 +5,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.http.converter.StringHttpMessageConverter;
@@ -12,7 +13,7 @@ import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
-
+@Slf4j
 @Configuration //申明这是一个配置
 public class MySrpingMVCConfig extends WebMvcConfigurerAdapter{
 
@@ -23,19 +24,21 @@ public class MySrpingMVCConfig extends WebMvcConfigurerAdapter{
             @Override
             public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
                     throws Exception {
-                System.out.println("自定义拦截器............");
+              log.debug("preHandle method is running!");
+                //System.out.println("自定义拦截器............");
                 return true;
             }
             
             @Override
             public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler,
                     ModelAndView modelAndView) throws Exception {
-                
+                log.debug("postHandle method is running!");
             }
             
             @Override
             public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler,
                     Exception ex) throws Exception {
+                log.debug("afterCompletion method is running!");
             }
         };
         registry.addInterceptor(handlerInterceptor).addPathPatterns("/**");

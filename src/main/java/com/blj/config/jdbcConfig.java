@@ -9,16 +9,12 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 
 import javax.sql.DataSource;
-
-/**
- * 注意2中方法都还需要在配置文件application.properties中配置jdbc属性
- */
 @Configuration
-//@EnableConfigurationProperties(JdbcProperties.class)//方法一：
+//@EnableConfigurationProperties(JdbcProperties.class)//方法2：
 public class jdbcConfig {
 
-    //方法一：
-    /*@Bean
+    //方法2：
+ /* @Bean
     public DataSource dataSource(JdbcProperties jdbcProperties){
         DruidDataSource dataSource = new DruidDataSource();
         dataSource.setDriverClassName(jdbcProperties.getDriverClassName());
@@ -28,7 +24,8 @@ public class jdbcConfig {
         return dataSource;
     }*/
 
-    //方法2：
+
+    //方法3：
     @Bean
     @ConfigurationProperties(prefix = "jdbc")
     public DataSource dataSource(){
